@@ -6,10 +6,12 @@ export const useStore = create(
     devtools(
       (set) => ({
         user: null,
+        openChat: true,
+        setOpenChat: (value) => set((state) => ({ ...state, openChat: value })),
         fingerprint: null,
         setFingerprint: (fingerprint) =>
           set((state) => ({ ...state, fingerprint })),
-        setUser: (user) => set((state) => state || { user }),
+        setUser: (user) => set((state) => ({ ...state, user })),
         bears: 0,
         increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
         removeAllBears: () => set({ bears: 0 }),
