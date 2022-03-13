@@ -44,7 +44,7 @@ export const Chat = ({ room: { title, url, image } }) => {
   };
 
   return (
-    <VStack overflow={"hidden"} width={openChat ? "auto" : 0}>
+    <VStack overflow={"hidden"} width={openChat ? "auto" /*"300px" */ : 0}>
       <VStack flexGrow={1} width={"100%"}>
         {messages.map(({ user, message }, index) => (
           <Box

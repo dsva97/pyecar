@@ -19,6 +19,7 @@
     "mongoose": "^6.1.7",
     "next": "12.0.8",
     "phaser": "^3.55.2",
+    "phaser2": "npm:phaser@2",
     "ravendb": "^5.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",

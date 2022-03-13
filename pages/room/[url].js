@@ -2,6 +2,7 @@ import React from "react";
 import { VStack, HStack, Box, Image, Heading, Button } from "@chakra-ui/react";
 import { Channel } from "../../channel";
 import { Chat } from "../../components/Chat";
+import { Game } from "../../components/Game";
 import dbConnect from "../../channel/connect";
 import { useStore } from "../../store";
 import { useRouter } from "next/router";
@@ -15,14 +16,18 @@ const Room = ({ room }) => {
   };
 
   const cam = () => {
-    navigator.getUserMedia({ video: true, audio: true }, (stream) => {
-      console.log(stream);
-      // const video = document.querySelector("video");
-      // video.srcObject = stream;
-      // video.onloadedmetadata = () => {
-      //   video.play();
-      // };
-    });
+    navigator.getUserMedia(
+      { video: true, audio: true },
+      (stream) => {
+        console.log(stream);
+        // const video = document.querySelector("video");
+        // video.srcObject = stream;
+        // video.onloadedmetadata = () => {
+        //   video.play();
+        // };
+      },
+      console.error
+    );
   };
 
   return (
@@ -31,7 +36,7 @@ const Room = ({ room }) => {
         <Button onClick={() => router.push("/")}>Home</Button>
         <HStack>
           <Heading>{room.title}</Heading>
-          <Image height="40px" src={room.image} />
+          <Image alt="Image of Room" height="40px" src={room.image} />
         </HStack>
         <HStack>
           <Button onClick={cam}>Cam</Button>
@@ -40,7 +45,10 @@ const Room = ({ room }) => {
         </HStack>
       </HStack>
       <HStack flexGrow={1} width="100%" alignItems="stretch">
-        <Box flexGrow={1}>Game</Box>
+        <Box flexGrow={1}>
+          {/* <Heading>Game</Heading> */}
+          <Game />
+        </Box>
         <Chat room={room} />
       </HStack>
     </VStack>
